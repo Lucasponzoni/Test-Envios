@@ -88,3 +88,35 @@ footer > a:hover{
     color: #e02a3e;
     margin: 0;
 }
+
+.total{
+    color: #028c00;
+}
+
+.aforado{
+    color:white;
+    background-color: black;
+    padding: .2rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.resultado{
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    text-align: center;
+    color: #e02a3e;
+    margin: 0;
+}
+
+.con-iva{
+    background-color: #ffd00092;
+    padding-left: .8rem;
+    border-radius: 10px;
+}
+
+.tarifa{
+    text-align: center;
+    margin-top: .5rem;
+}
