@@ -1,0 +1,35 @@
+@font-face {
+    font-family: sf_pro;
+    src: url(./elements/sf_pro_bold.OTF);
+}
+
+@font-face {
+    font-family: sf_pro_light;
+    src: url(./elements/sf_pro_light.OTF);
+}
+
+*{
+    font-family: "sf_pro";
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+*::selection {
+    color: #007aff;
+    background-color: rgba(255, 255, 255, 0.568627451);
+}
+
+.fondo {
+    background: rgb(255,186,169);
+    background: -moz-radial-gradient(circle, rgba(255,186,169,1) 0%, rgba(251,127,127,1) 46%, rgba(254,83,18,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(255,186,169,1) 0%, rgba(251,127,127,1) 46%, rgba(254,83,18,1) 100%);
+    background: radial-gradient(circle, rgba(255,186,169,1) 0%, rgba(251,127,127,1) 46%, rgba(254,83,18,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffbaa9",endColorstr="#fe5312",GradientType=1);}
+
+.cotizador{
+    margin-top: 2rem;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 2rem;
+}
