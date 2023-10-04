@@ -76,7 +76,7 @@ function calcularTarifa() {
                             <li>Costo de Distribución: $${data.tarifaSinIva.distribucion}</li>
                             <li>Total sin IVA: $${data.tarifaSinIva.total}</li>
                             ${switchActivado ? `<li>Total sin IVA + Recargo aplicado: $${totalConRecargoEnteroSinIva + recargo}</li>` : ''}
-                            ${switchDescuentoActivado ? `<li>Total sin IVA - Descuento aplicado: $${data.tarifaSinIva.total - descuentoAplicadoSinIva}</li>` : ''}
+                            ${switchDescuentoActivado ? `<li>Total sin IVA - Descuento aplicado: $${data.tarifaSinIva.total + recargo - descuentoAplicadoSinIva}</li>` : ''}
                         </ul>
                         </ul>
                     </div>
@@ -87,7 +87,7 @@ function calcularTarifa() {
                             <li>Costo de Distribución: $${data.tarifaConIva.distribucion}</li>
                             <li>Total con IVA: $${data.tarifaConIva.total}</li>
                             ${switchActivado ? `<li>Total con IVA + Recargo aplicado: $${totalConRecargoEntero + recargo}</li>` : ''}
-                            ${switchDescuentoActivado ? `<li>Total con IVA - Descuento aplicado: $${totalConRecargoEntero - descuentoAplicado}</li>` : ''}
+                            ${switchDescuentoActivado ? `<li>Total con IVA - Descuento aplicado: $${totalConRecargoEntero + Numberrecargo - NumberdescuentoAplicado}</li>` : ''}
                         </ul>
                     </div>
                 </div>

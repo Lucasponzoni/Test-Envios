@@ -79,3 +79,12 @@ footer > a:hover{
 .logo-foot{
     width: 300px;
 }
+
+.info{
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    text-align: center;
+    color: #e02a3e;
+    margin: 0;
+}
