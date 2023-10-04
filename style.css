@@ -43,9 +43,7 @@
     font-family: 'Unbounded', sans-serif;
     font-size: 2rem;
     text-align: center;
-    background: -webkit-linear-gradient(#fe1919, #aa1515);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #e02a3e;
 }
 
 .form-label{
@@ -63,11 +61,11 @@ footer{
     display: flex;
     flex-direction: column;
     text-align: center;
-    align-items: center;
-    font-family: 'Unbounded', sans-serif;    
+    align-items: center;    
 }
 
 footer > a{
+    font-family: 'Unbounded', sans-serif; 
     text-decoration: none;
     color: grey;
     transition: .5s;
