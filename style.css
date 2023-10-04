@@ -112,11 +112,15 @@ footer > a:hover{
 
 .con-iva{
     background-color: #ffd00092;
-    padding-left: .8rem;
     border-radius: 10px;
 }
 
 .tarifa{
     text-align: center;
     margin-top: .5rem;
+}
+
+.fake{
+    color: #e02a3e;
+    text-decoration: line-through;
 }

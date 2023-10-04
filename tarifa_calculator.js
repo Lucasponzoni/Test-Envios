@@ -48,22 +48,20 @@ function calcularTarifa() {
                     <div class="col-md-6">
                         <p class="tarifa">Tarifa sin IVA:</p>
                         <ul>
-                            <li>Seguro de Distribución: $${data.tarifaSinIva.seguroDistribucion}</li>
-                            <li>Costo de Distribución: $${data.tarifaSinIva.distribucion}</li>
                             <li class="total" >Total sin IVA: $${data.tarifaSinIva.total}</li>
-                            ${switchActivado ? `<li>Total sin IVA + Recargo aplicado: $${totalConRecargoEnteroSinIva + recargo}</li>` : ''}
+                            ${switchActivado ? `<li>Total sin IVA + Recargo aplicado: $${parseInt(totalConRecargoEnteroSinIva + recargo)}</li>` : ''}
                             ${switchDescuentoActivado ? `<li>Total + Descuento aplicado: $${parseInt(data.tarifaSinIva.total + recargo - descuentoAplicadoSinIva)}</li>` : ''}
                         </ul>
                     </div>
                     <div class="col-md-6 con-iva">
                         <p class="tarifa">Tarifa con IVA:</p>
                         <ul>
-                            <li>Seguro de Distribución: $${data.tarifaConIva.seguroDistribucion}</li>
-                            <li>Costo de Distribución: $${data.tarifaConIva.distribucion}</li>
                             <li class="total" >Total con IVA: $${data.tarifaConIva.total}</li>
-                            ${switchActivado ? `<li>Total con IVA + Recargo aplicado: $${totalConRecargoEntero + recargo}</li>` : ''}
+                            ${switchActivado ? `<li class="fake">Costo fake para mostrar: $${parseInt((totalConRecargoEntero + recargo) * 1.5)}</li>` : ''}
+                            ${switchActivado ? `<li>Total con IVA + Recargo aplicado: $${parseInt(totalConRecargoEntero + recargo)}</li>` : ''}
+                            ${switchDescuentoActivado ? `<li class="fake">Descuento fake para mostrar: $${parseInt((totalConRecargoEntero + recargo - descuentoAplicado) * 1.5)}</li>` : ''}
                             ${switchDescuentoActivado ? `<li>Total + Descuento aplicado: $${parseInt(totalConRecargoEntero + recargo - descuentoAplicado)}</li>` : ''}
-                        </ul>
+                            </ul>
                     </div>
                 </div>
             `;
