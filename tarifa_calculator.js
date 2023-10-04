@@ -1,4 +1,9 @@
 function calcularTarifa() {
+    const spinner = document.getElementById('spinner');
+    if (spinner) {
+        spinner.style.display = 'block';
+    }
+
     const cpDestino = document.getElementById('cpDestino').value;
     const contrato = document.getElementById('contrato').value;
     const cliente = "0012007490";
@@ -18,16 +23,11 @@ function calcularTarifa() {
 
     const switchDescuentoActivado = document.getElementById('flexSwitchCheckDefaultDescuento').checked;
 
-    const spinner = document.getElementById('spinner');
-    spinner.style.display = 'block';
-
     const apiUrl = `https://apis.andreani.com/v1/tarifas?cpDestino=${cpDestino}&contrato=${contrato}&cliente=${cliente}&sucursalOrigen=${sucursalOrigen}&bultos[0][valorDeclarado]=${valorDeclarado}&bultos[0][volumen]=${volumen}&bultos[0][kilos]=${kilos}&bultos[0][altoCm]=${altoCm}&bultos[0][largoCm]=${largoCm}&bultos[0][anchoCm]=${anchoCm}`;
 
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-            spinner.style.display = 'none';
-
             const recargo = switchActivado ? (porcentaje / 100) * data.tarifaSinIva.total : 0;
             const descuentoAplicado = switchDescuentoActivado ? (descuento / 100) * (data.tarifaConIva.total + recargo) : 0;
             const descuentoAplicadoSinIva = switchDescuentoActivado ? (descuento / 100) * (data.tarifaSinIva.total + recargo) : 0;
@@ -67,9 +67,16 @@ function calcularTarifa() {
                     </div>
                 </div>
             `;
+
+            if (spinner) {
+                spinner.style.display = 'none';
+            }
         })
         .catch(error => {
             console.error('Error al calcular la tarifa:', error);
-            spinner.style.display = 'none';
+
+            if (spinner) {
+                spinner.style.display = 'none';
+            }
         });
 }
