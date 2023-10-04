@@ -18,6 +18,7 @@
         <h1 class="titulo">Calculadora de Tarifas Andreani Novogar</h1>
         
         <form class="row g-3" id="tarifaForm">
+                        
             <div class="col-md-4">
                 <label for="cpDestino" class="form-label">Código Postal de Destino:</label>
                 <input type="text" class="form-control" id="cpDestino" name="cpDestino" placeholder="Codigo postal destino (Requerido*)" required>
@@ -53,9 +54,35 @@
             <div class="col-md-4">
                 <label for="validationServer02" for="contrato" class="form-label">Contrato:</label>
                 <select id="contrato" class="form-select is-valid" name="contrato">
-                    <option value="400017259" selected>NOVOGAR</option>
+                    <option value="400017259" selected>NOVOGAR CASA 400017259</option>
+                    <option value="351002753">NOVOGAR ALSA 351002753</option>
                 </select>
             </div>
+
+            <div class="col-md-4">
+                <label for="porcentaje" class="form-label">Porcentaje de recargo (1-100%):</label>
+                <input type="number" class="form-control" id="porcentaje" name="porcentaje" value="0">
+            </div>
+            
+            <div class="col-md-2">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Activar Recargo:</label>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="descuento" class="form-label">Porcentaje de Descuento (1-100%):</label>
+                <input type="number" class="form-control" id="descuento" name="descuento" value="0">
+            </div>
+            
+            <div class="col-md-2">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Activar Descuento:</label>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefaultDescuento">
+                </div>
+            </div>
+            
             <div class="d-grid gap-2">
                 <button type="button" class="btn btn-danger" onclick="calcularTarifa()">Calcular Tarifa</button>
             </div>
