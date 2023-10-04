@@ -30,6 +30,54 @@
 .cotizador{
     margin-top: 2rem;
     background-color: white;
+    margin-bottom: 1rem;
     padding: 1rem;
     border-radius: 2rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo{
+    font-family: 'Unbounded', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    background: -webkit-linear-gradient(#fe1919, #aa1515);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.form-label{
+    font-family:"sf_pro_light";
+}
+
+.logo-novogar{
+    width: 100px;
+    padding: .5rem;
+}
+
+footer{
+    padding: 1rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    font-family: 'Unbounded', sans-serif;    
+}
+
+footer > a{
+    text-decoration: none;
+    color: grey;
+    transition: .5s;
+}
+
+footer > a:hover{
+    text-decoration: underline;
+    color: red;
+}
+
+.logo-foot{
+    width: 300px;
 }
