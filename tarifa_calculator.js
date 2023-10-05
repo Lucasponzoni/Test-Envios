@@ -57,9 +57,9 @@ function calcularTarifa() {
                         <p class="tarifa">Tarifa con IVA:</p>
                         <ul>
                             <li class="total" >Total con IVA: $${data.tarifaConIva.total}</li>
-                            ${switchActivado ? `<li class="fake">Costo fake para mostrar: $${parseInt((totalConRecargoEntero + recargo) * 1.5)}</li>` : ''}
+                            ${switchActivado ? `<li class="fake">Costo fake para mostrar: $${parseInt((totalConRecargoEntero + recargo) * 2)}</li>` : ''}
                             ${switchActivado ? `<li>Total con IVA + Recargo aplicado: $${parseInt(totalConRecargoEntero + recargo)}</li>` : ''}
-                            ${switchDescuentoActivado ? `<li class="fake">Descuento fake para mostrar: $${parseInt((totalConRecargoEntero + recargo - descuentoAplicado) * 1.5)}</li>` : ''}
+                            ${switchDescuentoActivado ? `<li class="fake">Descuento del 50% sobre el envio: $${parseInt((totalConRecargoEntero + recargo - descuentoAplicado) * 1.5)}</li>` : ''}
                             ${switchDescuentoActivado ? `<li>Total + Descuento aplicado: $${parseInt(totalConRecargoEntero + recargo - descuentoAplicado)}</li>` : ''}
                             </ul>
                     </div>
