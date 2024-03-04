@@ -26,16 +26,53 @@ function calcularTarifa() {
     const apiUrl = `https://apis.andreani.com/v1/tarifas?cpDestino=${cpDestino}&contrato=${contrato}&cliente=${cliente}&sucursalOrigen=${sucursalOrigen}&bultos[0][valorDeclarado]=${valorDeclarado}&bultos[0][volumen]=${volumen}&bultos[0][kilos]=${kilos}&bultos[0][altoCm]=${altoCm}&bultos[0][largoCm]=${largoCm}&bultos[0][anchoCm]=${anchoCm}`;
 
     fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            const recargo = switchActivado ? (porcentaje / 100) * data.tarifaSinIva.total : 0;
-            const descuentoAplicado = switchDescuentoActivado ? (descuento / 100) * (data.tarifaConIva.total + recargo) : 0;
-            const descuentoAplicadoSinIva = switchDescuentoActivado ? (descuento / 100) * (data.tarifaSinIva.total + recargo) : 0;
-            const totalConRecargoSinIva = data.tarifaSinIva.total + recargo;
-            const totalConRecargo = data.tarifaConIva.total + recargo;
-            const totalConRecargoEntero = parseInt(totalConRecargo);
-            const totalConRecargoEnteroSinIva = parseInt(totalConRecargoSinIva);
+    .then(response => response.json())
+    .then(data => {
 
+        const recargo = switchActivado ? (porcentaje / 100) * data.tarifaSinIva.total : 0;
+        const descuentoAplicado = switchDescuentoActivado ? (descuento / 100) * (data.tarifaConIva.total + recargo) : 0;
+        const descuentoAplicadoSinIva = switchDescuentoActivado ? (descuento / 100) * (data.tarifaSinIva.total + recargo) : 0;
+        const totalConRecargoSinIva = data.tarifaSinIva.total + recargo;
+        const totalConRecargo = data.tarifaConIva.total + recargo;
+        const totalConRecargoEntero = parseInt(totalConRecargo);
+        const totalConRecargoEnteroSinIva = parseInt(totalConRecargoSinIva);
+        
+
+        // Lógica adicional para código postal en el rango 3300 a 3399
+        if (cpDestino >= 3300 && cpDestino <= 3399) {
+
+            const resultadoDiv = document.getElementById('resultado');
+            
+            resultadoDiv.innerHTML = `
+                <h2 class="resultado">Tarifa especial MISIONES:</h2>
+                <div class="row">
+                <div class="col-md-12">
+                    <p class="aforado">Peso Aforado: ${data.pesoAforado} kg</p>
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col-md-12 con-iva">
+                        <p class="tarifa">Tarifa con IVA:</p>
+                        <ul>
+                        <li class="total" >Total con IVA: $${data.tarifaConIva.total}</li>
+                            ${switchActivado ? `<li>Total con IVA + Recargo aplicado: $${parseInt(data.tarifaConIva.total + recargo)}</li>` : ''}
+                            ${switchDescuentoActivado ? `<li>Total + Descuento aplicado: $${parseInt(data.tarifaConIva.total - descuentoAplicadoMisiones)}</li>` : ''}
+                            ${cpDestino >= 3300 && cpDestino <= 3399 ? `
+                            
+                                ${switchActivado ? `<li class="fake">Costo fake para mostrar: $${parseInt((totalConRecargoEntero + recargo) * 2)}</li>` : ''}
+                                ${switchActivado ? `<li>Total con IVA + Recargo aplicado: $${parseInt(totalConRecargoEntero + recargo)}</li>` : ''}
+                                ${switchDescuentoActivado ? `<li class="fake">Descuento del 50% sobre el envio: $${parseInt((totalConRecargoEntero + recargo - descuentoAplicado) * 1.5)}</li>` : ''}
+                                ${switchDescuentoActivado ? `<li>Total + Descuento aplicado: $${parseInt(totalConRecargoEntero + recargo - descuentoAplicado)}</li>` : ''}
+    
+                                <li class="misiones">Tarifa MISIONES con Ingresos Brutos:</li>
+                                <ul>
+                                <li>Total final con ingresos brutos Misiones: $${parseInt(totalConRecargoEntero + ((valorDeclarado / 100 * 79) / 100 * 4.5))}</li>
+                                </ul>` : ''}
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
             const resultadoDiv = document.getElementById('resultado');
             resultadoDiv.innerHTML = `
                 <h2 class="resultado">Resultado de la Tarifa:</h2>
@@ -65,6 +102,7 @@ function calcularTarifa() {
                     </div>
                 </div>
             `;
+        }
 
             if (spinner) {
                 spinner.style.display = 'none';
