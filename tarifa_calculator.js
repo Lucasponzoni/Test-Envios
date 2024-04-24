@@ -68,9 +68,10 @@ function calcularTarifa() {
                 <h2 class="resultado">Tarifa especial MISIONES:</h2>
                 <div class="row">
                 <div class="col-md-12">
-                    <p class="aforado">Peso Aforado: ${data.pesoAforado} kg</p>
+                <p class="aforado">📦Peso Aforado: ${parseInt(data.pesoAforado)} kg</p>
                 </div>
             </div>
+            <img class="parcel" src="./elements/parcel-box-with-seal-5708250-4748231.webp">
             <div class="row">
             <div class="col-md-12 con-iva resultadoTarifa">
                 <p class="tarifa">Tarifa con IVA: ✅</p>
@@ -99,9 +100,10 @@ function calcularTarifa() {
                 <h2 class="resultado">Resultado de la Tarifa:</h2>
                 <div class="row">
                     <div class="col-md-12 resultadoTarifa">
-                        <p class="aforado">Peso Aforado: ${data.pesoAforado} kg</p>
+                    <p class="aforado">📦Peso Aforado: ${parseInt(data.pesoAforado)} kg</p>
                     </div>
                 </div>
+                <img class="parcel" src="./elements/parcel-box-with-seal-5708250-4748231.webp">
                 <div class="row totalT">
                 <div class="col-md-6">
                     <p class="tarifa">Tarifa sin IVA:</p>
