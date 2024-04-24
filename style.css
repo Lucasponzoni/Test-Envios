@@ -119,9 +119,9 @@ footer > a:hover{
 }
 
 .con-iva{
-    border: 2px solid #e02a3e;
     border-radius: 10px;
-    color: #e02a3e;
+    color: #003140;
+    background-color: rgb(103, 198, 19);
 }
 
 li.total{
@@ -221,4 +221,8 @@ li.total{
     align-items: center;
     display: flex;
     flex-direction: column;
+}
+
+.tarifaIva{
+    color: white;
 }

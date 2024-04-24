@@ -74,7 +74,7 @@ function calcularTarifa() {
             <img class="parcel" src="./elements/parcel-box-with-seal-5708250-4748231.webp">
             <div class="row">
             <div class="col-md-12 con-iva resultadoTarifa">
-                <p class="tarifa">Tarifa con IVA: ✅</p>
+                <p class="tarifa tarifaIva">Tarifa con IVA: ⚠️</p>
                 <ul>
                     <li class="total">Total con IVA: ${formatoPesos(data.tarifaConIva.total)}</li>
                     ${switchActivado ? `<li>Total con IVA + Recargo aplicado:$${formatoPesos(parseInt(data.tarifaConIva.total + recargo))}</li>` : ''}
@@ -114,7 +114,7 @@ function calcularTarifa() {
                     </ul>
                 </div>
                 <div class="col-md-6 con-iva">
-                    <p class="tarifa">Tarifa con IVA: ✅</p>
+                    <p class="tarifa tarifaIva">Tarifa con IVA: ⚠️</p>
                     <ul>
                         <li class="totalIva">Total con IVA: ${formatoPesos(data.tarifaConIva.total)}</li>
                         ${switchActivado ? `<li class="fake">Costo fake para mostrar: ${formatoPesos(parseInt((totalConRecargoEntero + recargo) * 2))}</li>` : ''}
