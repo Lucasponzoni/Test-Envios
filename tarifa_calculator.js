@@ -1,13 +1,34 @@
+const resultadoClean = document.getElementById('resultado');
+const spinner = document.querySelector(".loader");
+
+function eliminarResultado() {
+    resultadoClean.innerHTML = ""}
+
+const button = document.getElementById('button');
+button.addEventListener('click', function() {
+    calcularTarifa();
+    });
+    
+
+//!FUNCION MOSTRAR SPINNER
+function showSpinner() {
+    spinner.style.display = "block";
+}
+
+//!FUNCION OCULTAR SPINNER
+function hideSpinner() {
+    spinner.style.display = "none";
+}
+
 function calcularTarifa() {
-    const spinner = document.getElementById('spinner');
-    if (spinner) {
-        spinner.style.display = 'block';
-    }
+
+    eliminarResultado();
+    showSpinner();   
 
     const cpDestino = document.getElementById('cpDestino').value;
     const contrato = document.getElementById('contrato').value;
     const cliente = "0012007490";
-    const sucursalOrigen = document.getElementById('sucursalOrigen').value;
+    const sucursalOrigen = "PRC";
     const valorDeclarado = document.getElementById('valorDeclarado').value;
     const volumen = document.getElementById('volumen').value;
     const kilos = document.getElementById('kilos').value;
@@ -50,69 +71,70 @@ function calcularTarifa() {
                     <p class="aforado">Peso Aforado: ${data.pesoAforado} kg</p>
                 </div>
             </div>
-                <div class="row">
-                    <div class="col-md-12 con-iva">
-                        <p class="tarifa">Tarifa con IVA:</p>
+            <div class="row">
+            <div class="col-md-12 con-iva resultadoTarifa">
+                <p class="tarifa">Tarifa con IVA: ✅</p>
+                <ul>
+                    <li class="total">Total con IVA: ${formatoPesos(data.tarifaConIva.total)}</li>
+                    ${switchActivado ? `<li>Total con IVA + Recargo aplicado:$${formatoPesos(parseInt(data.tarifaConIva.total + recargo))}</li>` : ''}
+                    ${switchDescuentoActivado ? `<li>Total + Descuento aplicado: ${formatoPesos(parseInt(data.tarifaConIva.total - descuentoAplicadoMisiones))}</li>` : ''}
+                    ${cpDestino >= 3300 && cpDestino <= 3399 ? `
+                        ${switchActivado ? `<li class="fake">Costo fake para mostrar: ${formatoPesos(parseInt((totalConRecargoEntero + recargo) * 2))}</li>` : ''}
+                        ${switchActivado ? `<li>Total con IVA + Recargo aplicado: ${formatoPesos(parseInt(totalConRecargoEntero + recargo))}</li>` : ''}
+                        ${switchDescuentoActivado ? `<li class="fake">Descuento del 50% sobre el envio: ${formatoPesos(parseInt((totalConRecargoEntero + recargo - descuentoAplicado) * 1.5))}</li>` : ''}
+                        ${switchDescuentoActivado ? `<li>Total + Descuento aplicado: ${formatoPesos(parseInt(totalConRecargoEntero + recargo - descuentoAplicado))}</li>` : ''}
+            
+                        <li class="misiones">Tarifa MISIONES con Ingresos Brutos:</li>
                         <ul>
-                        <li class="total" >Total con IVA: $${data.tarifaConIva.total}</li>
-                            ${switchActivado ? `<li>Total con IVA + Recargo aplicado: $${parseInt(data.tarifaConIva.total + recargo)}</li>` : ''}
-                            ${switchDescuentoActivado ? `<li>Total + Descuento aplicado: $${parseInt(data.tarifaConIva.total - descuentoAplicadoMisiones)}</li>` : ''}
-                            ${cpDestino >= 3300 && cpDestino <= 3399 ? `
-                            
-                                ${switchActivado ? `<li class="fake">Costo fake para mostrar: $${parseInt((totalConRecargoEntero + recargo) * 2)}</li>` : ''}
-                                ${switchActivado ? `<li>Total con IVA + Recargo aplicado: $${parseInt(totalConRecargoEntero + recargo)}</li>` : ''}
-                                ${switchDescuentoActivado ? `<li class="fake">Descuento del 50% sobre el envio: $${parseInt((totalConRecargoEntero + recargo - descuentoAplicado) * 1.5)}</li>` : ''}
-                                ${switchDescuentoActivado ? `<li>Total + Descuento aplicado: $${parseInt(totalConRecargoEntero + recargo - descuentoAplicado)}</li>` : ''}
-    
-                                <li class="misiones">Tarifa MISIONES con Ingresos Brutos:</li>
-                                <ul>
-                                <li>Total final con ingresos brutos Misiones: $${parseInt(totalConRecargoEntero + ((valorDeclarado / 100 * 79) / 100 * 4.5))}</li>
-                                </ul>` : ''}
-                        </ul>
-                    </div>
-                </div>
+                            <li>Total final con ingresos brutos Misiones: ${formatoPesos(parseInt(totalConRecargoEntero + ((valorDeclarado / 100 * 79) / 100 * 4.5)))}</li>
+                        </ul>` : ''}
+                </ul>
+            </div>
+        </div>
+        
             `;
         } else {
             const resultadoDiv = document.getElementById('resultado');
             resultadoDiv.innerHTML = `
                 <h2 class="resultado">Resultado de la Tarifa:</h2>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 resultadoTarifa">
                         <p class="aforado">Peso Aforado: ${data.pesoAforado} kg</p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p class="tarifa">Tarifa sin IVA:</p>
-                        <ul>
-                            <li class="total" >Total sin IVA: $${data.tarifaSinIva.total}</li>
-                            ${switchActivado ? `<li>Total sin IVA + Recargo aplicado: $${parseInt(totalConRecargoEnteroSinIva + recargo)}</li>` : ''}
-                            ${switchDescuentoActivado ? `<li>Total + Descuento aplicado: $${parseInt(data.tarifaSinIva.total + recargo - descuentoAplicadoSinIva)}</li>` : ''}
-                        </ul>
-                    </div>
-                    <div class="col-md-6 con-iva">
-                        <p class="tarifa">Tarifa con IVA:</p>
-                        <ul>
-                            <li class="total" >Total con IVA: $${data.tarifaConIva.total}</li>
-                            ${switchActivado ? `<li class="fake">Costo fake para mostrar: $${parseInt((totalConRecargoEntero + recargo) * 2)}</li>` : ''}
-                            ${switchActivado ? `<li>Total con IVA + Recargo aplicado: $${parseInt(totalConRecargoEntero + recargo)}</li>` : ''}
-                            ${switchDescuentoActivado ? `<li class="fake">Descuento del 50% sobre el envio: $${parseInt((totalConRecargoEntero + recargo - descuentoAplicado) * 1.5)}</li>` : ''}
-                            ${switchDescuentoActivado ? `<li>Total + Descuento aplicado: $${parseInt(totalConRecargoEntero + recargo - descuentoAplicado)}</li>` : ''}
-                            </ul>
-                    </div>
+                <div class="row totalT">
+                <div class="col-md-6">
+                    <p class="tarifa">Tarifa sin IVA:</p>
+                    <ul>
+                        <li class="total">Total sin IVA: ${formatoPesos(data.tarifaSinIva.total)}</li>
+                        ${switchActivado ? `<li>Total sin IVA + Recargo aplicado: ${formatoPesos(parseInt(totalConRecargoEnteroSinIva + recargo))}</li>` : ''}
+                        ${switchDescuentoActivado ? `<li>Total + Descuento aplicado: ${formatoPesos(parseInt(data.tarifaSinIva.total + recargo - descuentoAplicadoSinIva))}</li>` : ''}
+                    </ul>
                 </div>
+                <div class="col-md-6 con-iva">
+                    <p class="tarifa">Tarifa con IVA: ✅</p>
+                    <ul>
+                        <li class="totalIva">Total con IVA: ${formatoPesos(data.tarifaConIva.total)}</li>
+                        ${switchActivado ? `<li class="fake">Costo fake para mostrar: ${formatoPesos(parseInt((totalConRecargoEntero + recargo) * 2))}</li>` : ''}
+                        ${switchActivado ? `<li>Total con IVA + Recargo aplicado: ${formatoPesos(parseInt(totalConRecargoEntero + recargo))}</li>` : ''}
+                        ${switchDescuentoActivado ? `<li class="fake">Descuento del 50% sobre el envio: ${formatoPesos(parseInt((totalConRecargoEntero + recargo - descuentoAplicado) * 1.5))}</li>` : ''}
+                        ${switchDescuentoActivado ? `<li>Total + Descuento aplicado: ${formatoPesos(parseInt(totalConRecargoEntero + recargo - descuentoAplicado))}</li>` : ''}
+                    </ul>
+                </div>
+            </div>            
             `;
         }
 
-            if (spinner) {
-                spinner.style.display = 'none';
-            }
+            hideSpinner();
         })
         .catch(error => {
             console.error('Error al calcular la tarifa:', error);
 
-            if (spinner) {
-                spinner.style.display = 'none';
-            }
+            hideSpinner();
         });
 }
+
+function formatoPesos(monto) {
+    return new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(monto);
+}
+

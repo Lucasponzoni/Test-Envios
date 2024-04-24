@@ -15,6 +15,14 @@
     box-sizing: border-box;
 }
 
+ol, ul{
+    padding: 0;
+}
+
+li{
+    list-style-type: none;
+}
+
 *::selection {
     color: #007aff;
     background-color: rgba(255, 255, 255, 0.568627451);
@@ -111,16 +119,94 @@ footer > a:hover{
 }
 
 .con-iva{
-    background-color: #ffd00092;
+    border: 2px solid #e02a3e;
     border-radius: 10px;
+    color: #e02a3e;
+}
+
+li.total{
+    color: black;
+    list-style-type: none;
 }
 
 .tarifa{
     text-align: center;
     margin-top: .5rem;
+
 }
 
 .fake{
     color: #e02a3e;
     text-decoration: line-through;
+}
+.totalIva{
+    color: yellow;
+    background-color: #000000;
+    padding: .4rem;
+    border-radius: 10px;
+    list-style-type: none;
+    text-align: center;
+}
+
+.contenedoropcionales{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.opcionales{
+    padding: 1.2rem;
+    display: flex;
+    background-color: #e02a3e;
+    gap: 1rem;
+    border-radius: 10px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.spanContenedor{
+    color: white;
+    background-color: #000000;
+    padding: .3rem;
+    border-radius: 10px;
+}
+
+.spanContenedor p{
+    margin: 0;
+}
+
+/*! SPINNER */
+.loader {
+    color: #333;
+    font-family: Consolas, Menlo, Monaco, monospace;
+    font-weight: bold;
+    font-size: 2rem;
+    opacity: 0.8;
+    display: none;
+  }
+  .loader:before {
+    content: "{Cotizando";
+    display: inline-block;
+    animation: pulse 0.4s alternate infinite ease-in-out;
+  }
+  .loader:after {
+    content: " Envío 🚚}";
+    display: inline-block;
+    animation: pulse 0.4s 0.3s alternate infinite ease-in-out;
+  }
+
+  @keyframes pulse {
+    to {
+      transform: scale(0.8);
+      opacity: 0.5;
+    }
+  }
+.totalT{
+    background-color: beige;
+    padding: 1rem;
+    border-radius: 10px;
 }
