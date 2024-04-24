@@ -173,6 +173,7 @@ li.total{
     background-color: #000000;
     padding: .3rem;
     border-radius: 10px;
+    text-align: center;
 }
 
 .spanContenedor p{
