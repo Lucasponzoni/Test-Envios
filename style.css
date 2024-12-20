@@ -195,7 +195,8 @@ li.total{
     animation: pulse 0.4s alternate infinite ease-in-out;
   }
   .loader:after {
-    content: " Envío 🚚}";
+    content: "Envío 🚚}";
+    margin-left: 10px;
     display: inline-block;
     animation: pulse 0.4s 0.3s alternate infinite ease-in-out;
   }
