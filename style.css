@@ -226,3 +226,144 @@ li.total{
 .tarifaIva{
     color: white;
 }
+
+.envio-info {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.square {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    margin: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.icon {
+    font-size: 2rem;
+    color: #28a745;
+    margin-bottom: 10px;
+}
+
+.timer {
+    font-size: small;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    animation: pulse 1s infinite;
+}
+
+.timer-text {
+    font-size: small;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.countdown {
+    font-weight: bold;
+    color: #dc3545;
+    font-size: .9rem;
+    margin: 0 5px;
+}
+
+.timer-icon {
+    font-size: 1.5rem;
+    color: #dc3545;
+}
+
+.precio {
+    font-weight: bold;
+    color: #28a745;
+    font-size: 1.25rem;
+}
+
+.recibi-hoy {
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 15px;
+}
+
+.llega-hoy {
+    color: #007bff; /* Resalta el texto de "Llega Hoy" */
+    font-weight: bold; /* Negrita para mayor énfasis */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.resultado-nueva {
+    color: #343a40;
+    text-align: center;
+}
+
+.envio-info {
+    min-width: 100%;
+    background-color: #f8f9fa; /* Fondo claro */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0px 15px #0000002b;
+}
+
+.square {
+    height: 200px; /* Altura fija para los cuadrados */
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.alert-danger {
+    background-color: #f8d7da; 
+    color: #d20418; 
+}
+
+.alert-primary {
+    background-color: #cfe2ff; 
+    color: #008efb; 
+}
+
+.aforado {
+    font-size: x-large;
+    font-weight: bold;
+    background-color: #c7fad3;
+    color: #155724; /* Color verde */
+    border: 1px solid #155724;
+    margin-bottom: -15px;
+}
+
+.total-sin-iva {
+    color: #721c24;
+}
+
+.total-con-iva{
+    color: #004478; 
+}
+
+.tarifa-nueva {
+    font-weight: bold;
+}
+
+.costo-fake {
+    color: #dc3545; 
+}
